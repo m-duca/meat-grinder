@@ -60,7 +60,10 @@ public class PlayerGameOver : MonoBehaviour
         _curHealth = Mathf.Clamp(_curHealth + points, 0, initialHealth);
 
         if (_curHealth == 0)
+        {
+            GameObject.FindObjectOfType<ScoreManager>()._canCount = false;
             Restart();
+        }
     }
     #endregion
 }
