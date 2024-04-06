@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     #region Variáveis Globais
     public Rigidbody2D rb;
+    public Transform sprite;
     public float jumpForce = 10f;
     public LayerMask groundLayer;
     public Transform feetPosition;
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _isGrounded = Physics2D.OverlapCircle(feetPosition.position, groundDistance, groundLayer);
 
+        #region JUMPING
         if (_isGrounded && Input.GetButtonDown("Jump")) //Se pressionar, pula mais alto
         {
             _isJumping = true;
@@ -56,6 +58,24 @@ public class PlayerMovement : MonoBehaviour
             _isJumping = false;
             _jumpTimer = 0;
         }
+        #endregion
+
+        #region CROUCHING
+        if (_isGrounded && Input.GetKey(KeyCode.LeftControl))
+        {
+            sprite.localScale = new Vector3(sprite.localScale.x, 0.5f, sprite.localScale.z);
+
+            if (_isJumping)
+            {
+                sprite.localScale = new Vector3(sprite.localScale.x, 1f, sprite.localScale.z);
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            sprite.localScale = new Vector3(sprite.localScale.x, 1f, sprite.localScale.z);
+        }
+
+        #endregion
     }
     #endregion
 }
