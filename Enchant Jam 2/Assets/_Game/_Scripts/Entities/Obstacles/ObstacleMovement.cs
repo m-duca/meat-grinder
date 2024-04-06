@@ -8,7 +8,7 @@ public class ObstacleMovement : MonoBehaviour
     [Header("Configurações:")]
 
     [Header("Velocidade:")]
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float moveSpeed;
 
     // Componentes
     private Rigidbody2D _rb;
@@ -21,6 +21,6 @@ public class ObstacleMovement : MonoBehaviour
     #endregion
 
     #region Funções Próprias
-    private void ApplyHorizontalMove() => _rb.velocity = Vector2.left * _moveSpeed;
+    private void ApplyHorizontalMove() => _rb.velocity = Vector2.left * moveSpeed;
     #endregion
 }
