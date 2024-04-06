@@ -32,7 +32,7 @@ public class PlayerLantern : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //if (col.gameObject.layer == _collisionLayersManager.LampOil.Index)
+        if (col.gameObject.layer == _collisionLayersManager.LampOil.Index)
             IncreaseLight();
     }
     #endregion
