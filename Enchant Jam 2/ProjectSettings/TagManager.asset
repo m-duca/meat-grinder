@@ -13,12 +13,12 @@ TagManager:
   - UI
   - 
   - DeadEndTrigger
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Player
+  - Obstacle
+  - Boss
+  - LampOil
+  - Bandages
   - 
   - 
   - 

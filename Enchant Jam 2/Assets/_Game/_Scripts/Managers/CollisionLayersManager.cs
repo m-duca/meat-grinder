@@ -5,6 +5,11 @@ using UnityEngine;
 public class CollisionLayersManager : MonoBehaviour
 {
     [Header("Layers:")] 
-    public SingleUnityLayer Floor;
     public SingleUnityLayer DeadEndTrigger;
+    public SingleUnityLayer Ground;
+    public SingleUnityLayer Player;
+    public SingleUnityLayer Obstacle;
+    public SingleUnityLayer Boss;
+    public SingleUnityLayer LampOil;
+    public SingleUnityLayer Bandages;
 }

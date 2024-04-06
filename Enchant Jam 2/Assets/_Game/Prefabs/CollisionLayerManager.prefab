@@ -44,7 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493407ec983cdbc40936c27ff85251fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Floor:
-    _layerIndex: 0
   DeadEndTrigger:
     _layerIndex: 7
+  Ground:
+    _layerIndex: 8
+  Player:
+    _layerIndex: 9
+  Obstacle:
+    _layerIndex: 10
+  Boss:
+    _layerIndex: 11
+  LampOil:
+    _layerIndex: 12
+  Bandages:
+    _layerIndex: 13

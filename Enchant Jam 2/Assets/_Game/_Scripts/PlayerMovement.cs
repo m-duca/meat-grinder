@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region Variáveis Globais
     public Rigidbody2D rb;
     public float jumpForce = 10f;
     public LayerMask groundLayer;
@@ -11,37 +12,50 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.2f;
     public float jumpTime = 0.3f;
 
-    bool isGrounded = false;
-    bool isJumping = false;
-    float jumpTimer;
+    bool _isGrounded = false;
+    bool _isJumping = false;
+    float _jumpTimer;
+
+    CollisionLayersManager _collisionLayersManager;
+    #endregion
+
+    #region Funções Unity
+    private void Start() => _collisionLayersManager = GameObject.FindObjectOfType<CollisionLayersManager>();
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.layer == _collisionLayersManager.DeadEndTrigger.Index)
+            Destroy(gameObject, 1f);
+    }
 
     private void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(feetPosition.position, groundDistance, groundLayer);
+        _isGrounded = Physics2D.OverlapCircle(feetPosition.position, groundDistance, groundLayer);
 
-        if (isGrounded && Input.GetButtonDown("Jump")) //Se pressionar, pula mais alto
+        if (_isGrounded && Input.GetButtonDown("Jump")) //Se pressionar, pula mais alto
         {
-            isJumping = true;
+            _isJumping = true;
             rb.velocity = Vector2.up * jumpForce;
         }
 
-        if (isJumping && Input.GetButton("Jump")) //Se apertar uma vez, pula
+        if (_isJumping && Input.GetButton("Jump")) //Se apertar uma vez, pula
         {
-            if (jumpTimer < jumpTime)
+            if (_jumpTimer < jumpTime)
             {
                 rb.velocity = Vector2.up * jumpForce;
-                jumpTimer += Time.deltaTime;
+                _jumpTimer += Time.deltaTime;
             }
             else
             {
-                isJumping = false;
+                _isJumping = false;
             }
         }
 
         if (Input.GetButtonUp("Jump"))
         {
-            isJumping = false;
-            jumpTimer = 0;
+            _isJumping = false;
+            _jumpTimer = 0;
         }
     }
+    #endregion
 }
