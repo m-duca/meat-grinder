@@ -34,6 +34,15 @@ public class PlayerMovement : MonoBehaviour
         _collisionLayersManager = GameObject.FindObjectOfType<CollisionLayersManager>();
     }
 
+    private void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "WalkableObstacle")
+        {
+            if (transform.position.y > col.gameObject.transform.position.y)
+                transform.position += Vector3.right * 1 * Time.deltaTime;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer == _collisionLayersManager.DeadEndTrigger.Index)
