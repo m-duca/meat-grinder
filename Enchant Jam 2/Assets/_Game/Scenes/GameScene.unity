@@ -156,7 +156,6 @@ MonoBehaviour:
   maxTime: 10
   obstaclesPrefabs:
   - {fileID: 5828087708235135561, guid: bb9cb38eba9b63045be6c693ac3387df, type: 3}
-  - {fileID: 5595174586986838826, guid: 0f0c93008e7aab64293a08b4e06eb4a3, type: 3}
   spawnPoint:
   - {fileID: 1058106578}
   - {fileID: 819120756}
