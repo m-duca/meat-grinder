@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.2f;
     public float jumpTime = 0.3f;
     public Animator anim;
+    public BoxCollider2D boxCollider;
 
     bool _isGrounded = false;
     bool _isJumping = false;
@@ -22,7 +23,10 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Funções Unity
-    private void Start() => _collisionLayersManager = GameObject.FindObjectOfType<CollisionLayersManager>();
+    private void Start()
+    {
+        _collisionLayersManager = GameObject.FindObjectOfType<CollisionLayersManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -65,18 +69,21 @@ public class PlayerMovement : MonoBehaviour
         if (_isGrounded && Input.GetKey(KeyCode.LeftControl))
         {
             anim.Play("Sliding");
-            //sprite.localScale = new Vector3(sprite.localScale.x, 0.5f, sprite.localScale.z);
+            boxCollider.offset = new Vector2(0f, -0.1271861f);
+            boxCollider.size = new Vector2(1.666667f, 0.871702f);
 
             if (_isJumping)
             {
                 anim.Play("Jumping");
-                //sprite.localScale = new Vector3(sprite.localScale.x, 1f, sprite.localScale.z);
+                boxCollider.offset = new Vector2(0f, 0.31f);
+                boxCollider.size = new Vector2(1.666667f, 1.743404f);
             }
         }
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             anim.Play("Player Walk Animation");
-            //sprite.localScale = new Vector3(sprite.localScale.x, 1f, sprite.localScale.z);
+            boxCollider.offset = new Vector2(0f, 0.31f);
+            boxCollider.size = new Vector2(1.666667f, 1.743404f);
         }
 
         #endregion
