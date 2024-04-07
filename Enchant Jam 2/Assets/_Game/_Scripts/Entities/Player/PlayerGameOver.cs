@@ -49,15 +49,15 @@ public class PlayerGameOver : MonoBehaviour
     {
         if (col.gameObject.layer == _collisionLayersManager.Obstacle.Index)
         {
-            ChangeHealthPoints(obstacleDamage);
+            ChangeHealthPoints(-obstacleDamage);
             cameraShakeSript.ApplyScreenShake();
-            StartCoroutine(SetInvencibilityInterval());
+            //StartCoroutine(SetInvencibilityInterval());
         }
         else if (col.gameObject.layer == _collisionLayersManager.Boss.Index)
         {
-            ChangeHealthPoints(bossDamage);
+            ChangeHealthPoints(-bossDamage);
             cameraShakeSript.ApplyScreenShake();
-            StartCoroutine(SetInvencibilityInterval());
+            //StartCoroutine(SetInvencibilityInterval());
         }
     }
     #endregion
