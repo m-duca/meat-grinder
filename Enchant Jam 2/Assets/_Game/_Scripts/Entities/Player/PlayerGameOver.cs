@@ -24,6 +24,8 @@ public class PlayerGameOver : MonoBehaviour
     [Header("Referências:")] 
     [SerializeField] private CameraShake cameraShakeSript;
     [SerializeField] private BlinkSpriteVFX blinkScript;
+    [SerializeField] private Animator anim;
+    [SerializeField] private PlayerMovement playerMovement;
 
     // Referências:
     private CollisionLayersManager _collisionLayersManager;
@@ -71,10 +73,14 @@ public class PlayerGameOver : MonoBehaviour
 
         if (_curHealth == 0)
         {
+            playerMovement.enabled = false;
+            anim.Play("Dead");
             ScoreManager.Instance.CanCount = false;
             Restart();
         }
     }
+
+    private void ResetAnim() => anim.Play("Player Walk Animation");
 
     private IEnumerator SetInvencibilityInterval()
     {
