@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6368730733054096848}
   - component: {fileID: 704566136506634984}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Oleo_Lamparina
   m_TagString: Untagged
   m_Icon: {fileID: 0}

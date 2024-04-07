@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2734888336940761275}
   - component: {fileID: 7527535794573877180}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icone_Corrida
   m_TagString: Untagged
   m_Icon: {fileID: 0}

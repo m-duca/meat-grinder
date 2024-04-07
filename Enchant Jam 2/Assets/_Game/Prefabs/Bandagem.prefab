@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5595916066249257615}
   - component: {fileID: 8396615365776334177}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bandagem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
