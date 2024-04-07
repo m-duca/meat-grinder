@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetPosition;
     public float groundDistance = 0.2f;
     public float jumpTime = 0.3f;
+    public Animator anim;
 
     bool _isGrounded = false;
     bool _isJumping = false;
@@ -63,16 +64,19 @@ public class PlayerMovement : MonoBehaviour
         #region CROUCHING
         if (_isGrounded && Input.GetKey(KeyCode.LeftControl))
         {
-            sprite.localScale = new Vector3(sprite.localScale.x, 0.5f, sprite.localScale.z);
+            anim.Play("Sliding");
+            //sprite.localScale = new Vector3(sprite.localScale.x, 0.5f, sprite.localScale.z);
 
             if (_isJumping)
             {
-                sprite.localScale = new Vector3(sprite.localScale.x, 1f, sprite.localScale.z);
+                anim.Play("Jumping");
+                //sprite.localScale = new Vector3(sprite.localScale.x, 1f, sprite.localScale.z);
             }
         }
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
-            sprite.localScale = new Vector3(sprite.localScale.x, 1f, sprite.localScale.z);
+            anim.Play("Player Walk Animation");
+            //sprite.localScale = new Vector3(sprite.localScale.x, 1f, sprite.localScale.z);
         }
 
         #endregion
