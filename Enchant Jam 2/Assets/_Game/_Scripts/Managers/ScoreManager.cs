@@ -16,15 +16,19 @@ public class ScoreManager : MonoBehaviour
 
     private float _curMeters;
 
-    public bool _canCount = true;
+    public bool CanCount = true;
+
+    public static ScoreManager Instance;
     #endregion
 
     #region Funções Unity
+    private void Awake() => Instance = this;
+
     private void Start() => InvokeRepeating("CalculateDistance", 0, 1 / imaginarySpeed);
 
     private void Update()
     {
-        if (!_canCount) return;
+        if (!CanCount) return;
         
         CalculateDistance();
         UpdateScore();

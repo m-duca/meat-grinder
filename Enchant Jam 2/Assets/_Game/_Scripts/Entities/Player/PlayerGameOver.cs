@@ -74,7 +74,7 @@ public class PlayerGameOver : MonoBehaviour
 
         if (_curHealth == 0)
         {
-            GameObject.FindObjectOfType<ScoreManager>()._canCount = false;
+            ScoreManager.Instance.CanCount = false;
             Restart();
         }
     }
