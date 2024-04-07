@@ -58,3 +58,5 @@ MonoBehaviour:
     _layerIndex: 12
   Bandages:
     _layerIndex: 13
+  FlipProjectileTrigger:
+    _layerIndex: 14
