@@ -13,7 +13,7 @@ public class ObstacleSpawnerManager : MonoBehaviour
 
     [Header("Referências:")]
     [SerializeField] private GameObject[] obstaclesPrefabs;
-    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform[] spawnPoint;
     #endregion
 
     #region Funções Unity
@@ -25,8 +25,8 @@ public class ObstacleSpawnerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(minTime, maxTime));
 
-        Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], spawnPoint.position,
-            Quaternion.identity);
+        Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], spawnPoint[Random.Range(0, spawnPoint.Length)].position,
+        Quaternion.identity);
 
         StartCoroutine(SpawnNextObstacle(minTime, maxTime));
     }
