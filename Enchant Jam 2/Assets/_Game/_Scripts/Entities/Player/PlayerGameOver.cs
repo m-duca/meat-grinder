@@ -35,7 +35,6 @@ public class PlayerGameOver : MonoBehaviour
     #endregion
 
     #region Funções Unity
-
     private void Start()
     {
         _collisionLayersManager = GameObject.FindObjectOfType<CollisionLayersManager>();

@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
         #region JUMPING
         if (_isGrounded && Input.GetButtonDown("Jump")) //Se pressionar, pula mais alto
         {
+            anim.SetTrigger("Jump");
+            Invoke("ResetAnim", 0.55f);
             _isJumping = true;
             rb.velocity = Vector2.up * jumpForce;
         }
@@ -74,7 +76,6 @@ public class PlayerMovement : MonoBehaviour
 
             if (_isJumping)
             {
-                anim.Play("Jumping");
                 boxCollider.offset = new Vector2(0f, 0.31f);
                 boxCollider.size = new Vector2(1.666667f, 1.743404f);
             }
@@ -85,8 +86,10 @@ public class PlayerMovement : MonoBehaviour
             boxCollider.offset = new Vector2(0f, 0.31f);
             boxCollider.size = new Vector2(1.666667f, 1.743404f);
         }
-
         #endregion
     }
+
+    private void ResetAnim() => anim.Play("Player Walk Animation");
+
     #endregion
 }
