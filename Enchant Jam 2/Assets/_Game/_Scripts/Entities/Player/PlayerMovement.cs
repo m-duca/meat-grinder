@@ -19,6 +19,12 @@ public class PlayerMovement : MonoBehaviour
     bool _isJumping = false;
     float _jumpTimer;
 
+    Vector2 _colliderOffset = new Vector2(0.04469192f, 0.3083174f);
+    Vector2 _colliderSize = new Vector2(1.266985f, 1.501546f);
+
+    Vector2 _crouchColliderOffset = new Vector2(0.03183937f, -0.06637287f);
+    Vector2 _crouchColliderSize = new Vector2(1.78f, 0.7560997f);
+
     CollisionLayersManager _collisionLayersManager;
     #endregion
 

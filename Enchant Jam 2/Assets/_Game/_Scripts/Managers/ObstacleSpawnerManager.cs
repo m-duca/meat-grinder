@@ -25,8 +25,10 @@ public class ObstacleSpawnerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(minTime, maxTime));
 
-        Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], spawnPoint[Random.Range(0, spawnPoint.Length)].position,
-        Quaternion.identity);
+        var obstacle = obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)];
+
+        Instantiate(obstacle, spawnPoint[Random.Range(0, spawnPoint.Length)].position,
+        obstacle.transform.rotation);
 
         StartCoroutine(SpawnNextObstacle(minTime, maxTime));
     }
