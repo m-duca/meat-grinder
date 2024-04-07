@@ -38,6 +38,10 @@ public class ScoreManager : MonoBehaviour
         _curMeters += distance;
     }
 
-    private void UpdateScore() => txtScore.text = _curMeters.ToString("F2");
+    private void UpdateScore()
+    {
+        txtScore.text = _curMeters.ToString("F2");
+        txtScore.text += "m";
+    }
     #endregion
 }
