@@ -40,7 +40,10 @@ public class PlayerMovement : MonoBehaviour
         if (col.gameObject.tag == "WalkableObstacle")
         {
             if (transform.position.y > col.gameObject.transform.position.y)
+            {
                 transform.position += Vector3.right * speed * Time.deltaTime;
+                rb.velocity = new Vector2(0f, rb.velocity.y);
+            }
         }
     }
 
