@@ -23,12 +23,10 @@ public class PlayerGameOver : MonoBehaviour
 
     [Header("Referências:")] 
     [SerializeField] private CameraShake cameraShakeSript;
+    [SerializeField] private BlinkSpriteVFX blinkScript;
 
     // Referências:
     private CollisionLayersManager _collisionLayersManager;
-
-    // Componentes:
-    private BlinkSpriteVFX _blinkScript;
 
     // Vida:
     private int _curHealth;
@@ -38,7 +36,7 @@ public class PlayerGameOver : MonoBehaviour
     private void Start()
     {
         _collisionLayersManager = GameObject.FindObjectOfType<CollisionLayersManager>();
-        _blinkScript = GetComponent<BlinkSpriteVFX>();
+        blinkScript = GetComponent<BlinkSpriteVFX>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -80,7 +78,7 @@ public class PlayerGameOver : MonoBehaviour
 
     private IEnumerator SetInvencibilityInterval()
     {
-        _blinkScript.SetBlink();
+        blinkScript.SetBlink();
         Physics2D.IgnoreLayerCollision(_collisionLayersManager.Player.Index, _collisionLayersManager.Obstacle.Index, true);
         Physics2D.IgnoreLayerCollision(_collisionLayersManager.Player.Index, _collisionLayersManager.Boss.Index, true);
         
