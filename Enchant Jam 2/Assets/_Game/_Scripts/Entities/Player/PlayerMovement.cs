@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpTime = 0.3f;
     public Animator anim;
     public BoxCollider2D boxCollider;
+    public int speed;
 
     bool _isGrounded = false;
     bool _isJumping = false;
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         if (col.gameObject.tag == "WalkableObstacle")
         {
             if (transform.position.y > col.gameObject.transform.position.y)
-                transform.position += Vector3.right * 1 * Time.deltaTime;
+                transform.position += Vector3.right * speed * Time.deltaTime;
         }
     }
 
