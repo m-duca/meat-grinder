@@ -8,6 +8,9 @@ public class MainMenuManager : MonoBehaviour
     public static MainMenuManager Instance;
 
     public static GameObject MainMenu, OptionsMenu, ControlsMenu;
+
+    // Referências
+    private AudioManager _audioManager;
     #endregion
 
     #region Unity
@@ -16,6 +19,10 @@ public class MainMenuManager : MonoBehaviour
         Instance = this;
         Init();
     }
+
+    private void Start() => _audioManager = GameObject.FindObjectOfType<AudioManager>();
+
+    public void PlaySFX() => _audioManager.PlaySFX("button");
     #endregion
 
     #region Other
