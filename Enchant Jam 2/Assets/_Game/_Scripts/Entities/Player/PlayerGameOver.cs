@@ -80,8 +80,6 @@ public class PlayerGameOver : MonoBehaviour
         }
     }
 
-    private void ResetAnim() => anim.Play("Player Walk Animation");
-
     private IEnumerator SetInvencibilityInterval()
     {
         blinkScript.SetBlink();
