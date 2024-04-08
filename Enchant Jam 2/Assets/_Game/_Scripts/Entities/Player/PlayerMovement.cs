@@ -27,12 +27,14 @@ public class PlayerMovement : MonoBehaviour
     Vector2 _crouchColliderSize = new Vector2(1.78f, 0.7560997f);
 
     CollisionLayersManager _collisionLayersManager;
+    AudioManager _audioManager;
     #endregion
 
     #region Funções Unity
     private void Start()
     {
         _collisionLayersManager = GameObject.FindObjectOfType<CollisionLayersManager>();
+        _audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
 
     private void OnCollisionStay2D(Collision2D col)
@@ -60,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         #region JUMPING
         if (_isGrounded && Input.GetButtonDown("Jump")) //Se pressionar, pula mais alto
         {
+            _audioManager.PlaySFX("player jump");
             anim.SetTrigger("Jump");
             Invoke("ResetAnim", 0.55f);
             _isJumping = true;
@@ -89,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
         #region CROUCHING
         if (_isGrounded && Input.GetKey(KeyCode.LeftControl))
         {
+            _audioManager.PlaySFX("player slide");
             anim.Play("Sliding");
             boxCollider.offset = new Vector2(0f, -0.1271861f);
             boxCollider.size = new Vector2(1.666667f, 0.871702f);
