@@ -17,6 +17,7 @@ public class PlayerLantern : MonoBehaviour
 
     // Referências
     private CollisionLayersManager _collisionLayersManager;
+    private AudioManager _audioManager;
 
     private float _initialLightRadius;
     #endregion
@@ -25,6 +26,7 @@ public class PlayerLantern : MonoBehaviour
     private void Start()
     {
         _collisionLayersManager = GameObject.FindObjectOfType<CollisionLayersManager>();
+        _audioManager = GameObject.FindObjectOfType<AudioManager>();
         _initialLightRadius = light.pointLightOuterRadius;
     }
 
@@ -33,7 +35,11 @@ public class PlayerLantern : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer == _collisionLayersManager.LampOil.Index)
+        {
             IncreaseLight();
+            _audioManager.PlaySFX("lantern");
+            Destroy(col.gameObject);
+        }
     }
     #endregion
 

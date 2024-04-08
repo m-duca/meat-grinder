@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class BossProjectile : MonoBehaviour
@@ -17,6 +18,7 @@ public class BossProjectile : MonoBehaviour
 
     // Referências:
     private CollisionLayersManager _collisionLayersManager;
+    private AudioManager _audioManager;
 
     // Componentes:
     private Rigidbody2D _rb;
@@ -29,7 +31,10 @@ public class BossProjectile : MonoBehaviour
     private void Start()
     {
         _collisionLayersManager = GameObject.FindObjectOfType<CollisionLayersManager>();
+        _audioManager = GameObject.FindObjectOfType<AudioManager>();
         _rb = GetComponent<Rigidbody2D>();
+
+        PlaySfxProjectile();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -39,14 +44,13 @@ public class BossProjectile : MonoBehaviour
             _isReturning = true;
             _rb.isKinematic = false;
             StartCoroutine(ReturnInterval());
+            StartCoroutine(BossProjectileManager.Instance.SpawnNextProjectile());
         }
         else if (col.gameObject.layer == _collisionLayersManager.DeadEndTrigger.Index)
             Destroy(gameObject, 0.25f);
     }
 
     private void FixedUpdate() => ApplyHorizontalMovement();
-
-    private void OnDestroy() => StartCoroutine(BossProjectileManager.Instance.SpawnNextProjectile());
     #endregion
 
     #region Funções Próprias
@@ -61,6 +65,9 @@ public class BossProjectile : MonoBehaviour
         //TODO: Mostrar Indicador
         yield return new WaitForSeconds(Random.Range(minReturnTime, maxReturnTime));
         _rb.isKinematic = true;
+        PlaySfxProjectile();
     }
+
+    private void PlaySfxProjectile() => _audioManager.PlaySFX("boss projectile");
     #endregion
 }

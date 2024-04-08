@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     bool _isGrounded = false;
     bool _isJumping = false;
     float _jumpTimer;
+    bool _canPlaySlide = true;
 
     Vector2 _colliderOffset = new Vector2(0.04469192f, 0.3083174f);
     Vector2 _colliderSize = new Vector2(1.266985f, 1.501546f);
@@ -35,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _collisionLayersManager = GameObject.FindObjectOfType<CollisionLayersManager>();
         _audioManager = GameObject.FindObjectOfType<AudioManager>();
+
+        PlaySfxWalk();
     }
 
     private void OnCollisionStay2D(Collision2D col)
@@ -92,7 +95,11 @@ public class PlayerMovement : MonoBehaviour
         #region CROUCHING
         if (_isGrounded && Input.GetKey(KeyCode.LeftControl))
         {
-            _audioManager.PlaySFX("player slide");
+            if (_canPlaySlide)
+            {
+                _audioManager.PlaySFX("player slide");
+                _canPlaySlide = false;
+            }
             anim.Play("Sliding");
             boxCollider.offset = new Vector2(0f, -0.1271861f);
             boxCollider.size = new Vector2(1.666667f, 0.871702f);
@@ -105,6 +112,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
+            Invoke("ResetCanPlaySlide", 0.35f);
+            
             anim.Play("Player Walk Animation");
             boxCollider.offset = new Vector2(0f, 0.31f);
             boxCollider.size = new Vector2(1.666667f, 1.743404f);
@@ -114,5 +123,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void ResetAnim() => anim.Play("Player Walk Animation");
 
+    private void ResetCanPlaySlide() => _canPlaySlide = true;
+
+    private void PlaySfxWalk()
+    {
+        _audioManager.PlaySFX("player walk");
+        Invoke("PlaySfxWalk", 2.25f);
+    }
     #endregion
 }
