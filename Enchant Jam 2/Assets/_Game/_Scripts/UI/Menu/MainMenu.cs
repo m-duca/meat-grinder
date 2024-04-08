@@ -11,7 +11,5 @@ public class MainMenu : MonoBehaviour
 
     public void GoToControls() => MainMenuManager.Instance.OpenMenu(Default.Controls, MainMenuManager.MainMenu);
 
-    public void GoToCredits() => MainMenuManager.Instance.OpenMenu(Default.Credits, MainMenuManager.MainMenu);
-
     public void ExitGame() => Application.Quit();
 }

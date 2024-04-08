@@ -7,7 +7,7 @@ public class MainMenuManager : MonoBehaviour
     #region Variables
     public static MainMenuManager Instance;
 
-    public static GameObject MainMenu, OptionsMenu, ControlsMenu, CreditsMenu;
+    public static GameObject MainMenu, OptionsMenu, ControlsMenu;
     #endregion
 
     #region Unity
@@ -25,7 +25,6 @@ public class MainMenuManager : MonoBehaviour
         MainMenu = menuCanvas.transform.Find("MainMenu").gameObject;
         OptionsMenu = menuCanvas.transform.Find("OptionsMenu").gameObject;
         ControlsMenu = menuCanvas.transform.Find("ControlsMenu").gameObject;
-        CreditsMenu = menuCanvas.transform.Find("CreditsMenu").gameObject;
     }
 
     public void OpenMenu(Default menu, GameObject callingMenu)
@@ -42,10 +41,6 @@ public class MainMenuManager : MonoBehaviour
 
             case Default.Controls:
                 ControlsMenu.SetActive(true);
-                break;
-
-            case Default.Credits:
-                CreditsMenu.SetActive(true);
                 break;
         }
 
