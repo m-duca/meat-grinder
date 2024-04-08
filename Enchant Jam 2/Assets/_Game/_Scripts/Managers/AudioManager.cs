@@ -38,8 +38,9 @@ public class AudioManager : MonoBehaviour
         if (_fadeVolume.enabled == false)
             AudioListener.volume = PlayerPrefs.GetFloat("masterVolume"); // Alterando o masterVolume com base no PlayerPrefs
 
-        // Retomando o progresso da música que estava tocando
+        /* Retomando o progresso da música que estava tocando
         if (curMusicAudioSource != null) musicCurTime = curMusicAudioSource.time;
+        */
     }
     #endregion
 
@@ -73,11 +74,15 @@ public class AudioManager : MonoBehaviour
                 var mObj = new GameObject("Music " + m.Clip.name);
                 var mAudioSource = mObj.AddComponent<AudioSource>();
                 mAudioSource.clip = m.Clip;
+                
+                /*
                 mAudioSource.volume = m.Volume;
                 if (musicCurTime != 0 && m.Clip.name == musicCurName)
                     mAudioSource.time = musicCurTime;
                 else
                     Destroy(musicCurObj);
+    
+                */
 
                 musicCurObj = mObj;
                 musicCurName = m.Clip.name;
