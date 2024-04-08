@@ -13,6 +13,9 @@ public class GameMenuManager : MonoBehaviour
 
     // Referências dos Menus que serão manipulados
     public static GameObject GameMenu, OptionsMenu, ControlsMenu;
+
+    // Referência Audio
+    private AudioManager _audioManager;
     #endregion
 
     #region Funções Unity
@@ -33,6 +36,8 @@ public class GameMenuManager : MonoBehaviour
         ControlsMenu = MenuCanvas.transform.Find("ControlsMenu").gameObject;
 
         MenuCanvas.GetComponent<Canvas>().enabled = false;
+
+        _audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
 
     // Abre o menu desejado e fecha o que foi utilizado anteriormente
@@ -57,5 +62,7 @@ public class GameMenuManager : MonoBehaviour
         // Desativando o anterior
         callingMenu.SetActive(false);
     }
+
+    public void PlaySFX() => _audioManager.PlaySFX("button");
     #endregion
 }

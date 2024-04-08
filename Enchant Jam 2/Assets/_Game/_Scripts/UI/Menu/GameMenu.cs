@@ -45,7 +45,7 @@ public class GameMenu : MonoBehaviour
 
     public void GoToControls() => GameMenuManager.Instance.OpenMenu(InGame.Controls, GameMenuManager.GameMenu);
 
-    public void GoToMainMenu() => SceneManager.LoadScene("TestMainMenu");
+    public void GoToMainMenu() => SceneManager.LoadScene("MainMenu");
 
     #endregion
 }

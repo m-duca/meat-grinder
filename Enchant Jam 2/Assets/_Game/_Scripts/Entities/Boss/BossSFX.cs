@@ -10,15 +10,17 @@ public class BossSFX : MonoBehaviour
     {
         _audioManager = GameObject.FindObjectOfType<AudioManager>();
 
+        _audioManager.PlaySFX("boss_scream2");
+
         PlaySfxScream();
     }
 
     private void PlaySfxScream()
     {
-        var target = "boss_scream" + Random.Range(1, 4).ToString();
+        var target = "boss_scream" + Random.Range(1, 3).ToString();
         _audioManager.PlaySFX(target);
 
-        Invoke("PlaySfxScream", Random.Range(10f, 20f));
+        Invoke("PlaySfxScream", Random.Range(8f, 18f));
     }
 
 }

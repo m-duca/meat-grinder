@@ -32,6 +32,8 @@ public class PlayerGameOver : MonoBehaviour
 
     // Vida:
     private int _curHealth;
+
+    private bool _canRestart = true;
     #endregion
 
     #region Funções Unity
@@ -41,12 +43,18 @@ public class PlayerGameOver : MonoBehaviour
         blinkScript = GetComponent<BlinkSpriteVFX>();
     }
 
+    private void Update()
+    {
+        if (anim.speed == 0f)
+            transform.position += Vector3.left * Time.deltaTime;
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer == _collisionLayersManager.DeadEndTrigger.Index)
-            Restart();
-
-        else if (col.gameObject.layer == _collisionLayersManager.Obstacle.Index)
+            ChangeHealthPoints(-obstacleDamage);
+        
+        if (col.gameObject.layer == _collisionLayersManager.Obstacle.Index)
         {
             ChangeHealthPoints(-obstacleDamage);
             cameraShakeSript.ApplyScreenShake();
@@ -78,16 +86,18 @@ public class PlayerGameOver : MonoBehaviour
     #endregion
 
     #region Funções Próprias
-    private void Restart() => TransitionManager.Instance().Transition(SceneManager.GetActiveScene().name, transitionSettings, loadTime);
+    private void Restart() => TransitionManager.Instance().Transition("GameScene", transitionSettings, loadTime);
 
     private void ChangeHealthPoints(int points)
     {
         _curHealth = Mathf.Clamp(_curHealth + points, 0, initialHealth);
 
-        if (_curHealth == 0)
+        if (_curHealth == 0 && _canRestart)
         {
+            _canRestart = false;
             playerMovement.enabled = false;
             anim.Play("Dead");
+            anim.speed = 0f;
             ScoreManager.Instance.CanCount = false;
             Restart();
         }

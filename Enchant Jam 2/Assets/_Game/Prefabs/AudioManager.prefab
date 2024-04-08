@@ -52,7 +52,6 @@ MonoBehaviour:
   sfxs:
   - {fileID: 11400000, guid: 82a1c1594344b0a4dabd8babaf1b03c7, type: 2}
   - {fileID: 11400000, guid: 43a0b773e31da1542a334ec58e674098, type: 2}
-  - {fileID: 11400000, guid: b6a2ec9327a9065428dd9c3eea4da96a, type: 2}
   - {fileID: 11400000, guid: 11a9ba26483a58a48a775e4886f9476a, type: 2}
   - {fileID: 11400000, guid: d34caa4df9bcc344f9258d653b770b9c, type: 2}
   - {fileID: 11400000, guid: 16dd31f764d134c41ba91a1873011fb6, type: 2}

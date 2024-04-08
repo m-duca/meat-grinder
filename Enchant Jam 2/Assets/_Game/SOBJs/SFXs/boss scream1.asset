@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef2fc49e9c66c024cb5e946dc66bb12f, type: 3}
   m_Name: boss scream1
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: b960042fa7b9c424b84ee66032e11aad, type: 3}
+  Clip: {fileID: 8300000, guid: c95326e9f15724448870a74d4a470816, type: 3}
   Volume: 1
   Pitch: 1
