@@ -2317,6 +2317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1589436415}
   - component: {fileID: 1589436414}
+  - component: {fileID: 1589436416}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -2389,6 +2390,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 619178537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1589436416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589436413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2733e0aa017e141a6e4a75a452404b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742762666
 GameObject:
   m_ObjectHideFlags: 0
