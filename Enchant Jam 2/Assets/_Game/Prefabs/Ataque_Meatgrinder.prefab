@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6300ceae24cacab47b86d5ebdce91cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minReturnTime: 10
+  minReturnTime: 20
   maxReturnTime: 20
   forwardSpeed: 10
   backwardSpeed: 15

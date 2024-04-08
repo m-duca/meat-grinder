@@ -45,6 +45,19 @@ public class PlayerGameOver : MonoBehaviour
     {
         if (col.gameObject.layer == _collisionLayersManager.DeadEndTrigger.Index)
             Restart();
+
+        else if (col.gameObject.layer == _collisionLayersManager.Obstacle.Index)
+        {
+            ChangeHealthPoints(-obstacleDamage);
+            cameraShakeSript.ApplyScreenShake();
+            //StartCoroutine(SetInvencibilityInterval());
+        }
+        else if (col.gameObject.layer == _collisionLayersManager.Boss.Index)
+        {
+            ChangeHealthPoints(-bossDamage);
+            cameraShakeSript.ApplyScreenShake();
+            //StartCoroutine(SetInvencibilityInterval());
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col)

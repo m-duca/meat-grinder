@@ -20,7 +20,11 @@ public class CameraShake : MonoBehaviour
 
     private void Start()
     {
+        ApplyScreenShake();
+
         _camAnim.speed = animationSpeed;
+
+        InvokeRepeating("ApplyScreenShake", 1f, 0.1f);
     }
     #endregion
 
