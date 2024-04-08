@@ -18,6 +18,8 @@ public class BossProjectileManager : MonoBehaviour
     [SerializeField] private BossProjectile bossProjectilePrefab;
 
     public static BossProjectileManager Instance;
+
+    bool spawningInProgress = false;
     #endregion
 
     #region Funções Unity
@@ -29,9 +31,15 @@ public class BossProjectileManager : MonoBehaviour
     #region Funções Próprias
     public IEnumerator SpawnNextProjectile()
     {
-        //TODO: Mostrar Indicador
-        yield return new WaitForSeconds(Random.Range(minTime, maxTime));
-        Instantiate(bossProjectilePrefab, spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
+        if (!spawningInProgress)
+        {
+            spawningInProgress = true;
+            Debug.Log("SPAWNOU");
+            //TODO: Mostrar Indicador
+            yield return new WaitForSeconds(Random.Range(minTime, maxTime));
+            Instantiate(bossProjectilePrefab, spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
+            spawningInProgress = false;
+        }
     }
     #endregion
 }

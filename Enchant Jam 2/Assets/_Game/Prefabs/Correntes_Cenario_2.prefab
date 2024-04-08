@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4534170874314672211}
   - component: {fileID: 424359912240555087}
   - component: {fileID: 2794626808878817430}
+  - component: {fileID: 629406438277184038}
   - component: {fileID: -6836066011866257291}
   m_Layer: 0
   m_Name: Correntes_Cenario_2
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 8a328bf321bcbd64b9690c390898af60, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -113,6 +114,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &629406438277184038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992484529618768518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd7bc8206aec104487f9d64d77b8706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-6836066011866257291
 MonoBehaviour:
   m_ObjectHideFlags: 0
