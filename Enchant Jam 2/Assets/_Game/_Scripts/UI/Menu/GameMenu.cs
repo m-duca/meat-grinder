@@ -1,3 +1,4 @@
+using EasyTransition;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,17 @@ using UnityEngine.SceneManagement;
 public class GameMenu : MonoBehaviour
 {
     #region Variables
+    [Header("Transição Menu:")]
+    [SerializeField] private TransitionSettings transitionSettings;
+    [SerializeField] private float loadTime;
+
     private bool _gamePaused;
     #endregion
 
     #region Unity
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!_gamePaused)
@@ -45,7 +51,11 @@ public class GameMenu : MonoBehaviour
 
     public void GoToControls() => GameMenuManager.Instance.OpenMenu(InGame.Controls, GameMenuManager.GameMenu);
 
-    public void GoToMainMenu() => SceneManager.LoadScene("MainMenu");
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        TransitionManager.Instance().Transition("MainMenu", transitionSettings, loadTime);
+    }
 
     #endregion
 }

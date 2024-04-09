@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: obstacle
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 72be4fc504bcb5343be9f74e3b31eecc, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

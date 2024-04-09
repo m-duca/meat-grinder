@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: boss projectile
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 8d0e674899a1d7441be0ec7b9346f592, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

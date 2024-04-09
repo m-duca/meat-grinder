@@ -46,7 +46,10 @@ public class PlayerGameOver : MonoBehaviour
     private void Update()
     {
         if (anim.speed == 0f)
+        {
+            anim.Play("Dead");
             transform.position += Vector3.left * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)

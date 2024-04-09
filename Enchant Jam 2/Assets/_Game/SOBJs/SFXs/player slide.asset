@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: player slide
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 163a9f8c4b3132842861217a33a312d1, type: 3}
-  Volume: 1
+  Volume: 0.35
   Pitch: 1
