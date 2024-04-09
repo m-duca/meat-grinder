@@ -10,10 +10,20 @@ public class MainMenu : MonoBehaviour
     [Header("Transição Jogar:")]
     [SerializeField] private TransitionSettings transitionSettings;
     [SerializeField] private float loadTime;
+
+    private AudioManager _audioManager;
+    #endregion
+
+    #region Funções Unity
+    private void Awake() => _audioManager = GameObject.FindObjectOfType<AudioManager>();
     #endregion
 
     #region Funções Próprias
-    public void StartGame() => TransitionManager.Instance().Transition("GameScene", transitionSettings, loadTime);
+    public void StartGame()
+    {
+        _audioManager.PlayMusic("game");
+        TransitionManager.Instance().Transition("GameScene", transitionSettings, loadTime);
+    } 
 
     public void GoToOptions() => MainMenuManager.Instance.OpenMenu(Default.Options, MainMenuManager.MainMenu);
 
