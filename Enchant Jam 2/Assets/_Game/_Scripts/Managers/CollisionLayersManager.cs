@@ -13,4 +13,5 @@ public class CollisionLayersManager : MonoBehaviour
     public SingleUnityLayer LampOil;
     public SingleUnityLayer Bandages;
     public SingleUnityLayer FlipProjectileTrigger;
+    public SingleUnityLayer WinTrigger;
 }

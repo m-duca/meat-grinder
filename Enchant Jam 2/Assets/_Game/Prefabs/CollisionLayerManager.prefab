@@ -60,3 +60,5 @@ MonoBehaviour:
     _layerIndex: 13
   FlipProjectileTrigger:
     _layerIndex: 14
+  WinTrigger:
+    _layerIndex: 15

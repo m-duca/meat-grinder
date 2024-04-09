@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameMenuManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameMenuManager : MonoBehaviour
 
     // Referência Audio
     private AudioManager _audioManager;
+
+    private static bool _firstTime = true;
     #endregion
 
     #region Funções Unity
@@ -29,7 +32,13 @@ public class GameMenuManager : MonoBehaviour
     #region Funções Próprias
     // Coletando os objetos necessários
     private void Init()
-    { 
+    {
+        if (_firstTime)
+        {
+            PlayerPrefs.SetFloat("masterVolume", 1f);
+            _firstTime = false;
+        }
+
         MenuCanvas = GameObject.Find("GameMenu Canvas");
         GameMenu = MenuCanvas.transform.Find("GameMenu").gameObject;
         OptionsMenu = MenuCanvas.transform.Find("OptionsMenu").gameObject;
